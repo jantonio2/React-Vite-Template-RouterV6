@@ -1,14 +1,11 @@
 import styles from '../styles/styles.module.css';
 import noImage  from '../assets/no-image.jpg';
 import { useDebugValue, useState } from 'react';
+import { useProduct } from '../hooks/useProduct';
 
 export const ProductCard = () => {
 
-  const [counter, setCounter] = useState(0);
-
-  const increase = ( value: number ) => {
-    setCounter( prev => Math.max( prev + value, 0) );
-  }
+  const { counter, increaseBy } = useProduct();
 
   return (
     <div className={ styles.productCard }>
@@ -20,11 +17,11 @@ export const ProductCard = () => {
       <div className={ styles.buttonsContainer }>
         <button 
           className={ styles.buttonMinus }
-          onClick={ () => increase( -1 ) }> - </button>
+          onClick={ () => increaseBy( -1 ) }> - </button>
         <div className={ styles.countLabel }> { counter } </div>
         <button 
           className={ styles.buttonAdd }
-          onClick={ () => increase( 1 ) } > + </button>
+          onClick={ () => increaseBy( 1 ) } > + </button>
       </div>
     </div>
   );
