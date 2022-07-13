@@ -3,16 +3,25 @@ import noImage  from '../assets/no-image.jpg';
 import { useDebugValue, useState } from 'react';
 import { useProduct } from '../hooks/useProduct';
 
-export const ProductCard = () => {
+interface Props {
+  product: Product;
+}
+
+interface Product {
+  id: string;
+  title: string;
+  img?: string;
+}
+
+export const ProductCard = ({ product }: Props) => {
 
   const { counter, increaseBy } = useProduct();
 
   return (
     <div className={ styles.productCard }>
-      <img className={ styles.productImg } src="./coffee-mug.png" alt="Coffe Mug" />
-      {/* <img className={ styles.productImg } src={ noImage } alt="Coffe Mug" /> */}
+      <img className={ styles.productImg } src={ product.img ? product.img : noImage } alt="Coffe Mug" />
 
-      <span className={ styles.productDescription }>Coffe Mug</span>
+      <span className={ styles.productDescription }>{ product.title }</span>
 
       <div className={ styles.buttonsContainer }>
         <button 
