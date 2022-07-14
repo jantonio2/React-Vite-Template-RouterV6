@@ -5,6 +5,11 @@ export interface ProductCardProps {
   children?: ReactElement | ReactElement[];
   className?: string;
 }
+export interface ProductContextProps {
+  counter: number;
+  increaseBy: ( value: number ) => void;
+  product: Product;
+}
 
 export interface Product {
   id: string;
@@ -12,15 +17,19 @@ export interface Product {
   img?: string;
 }
 
-export interface ProductContextProps {
-  counter: number;
-  increaseBy: ( value: number ) => void;
-  product: Product;
-}
-
 export interface ProductCardHOCProps {
   ({ children, product }: ProductCardProps): JSX.Element,
   Title: ({ title }: { title?: string }) => JSX.Element;
   Image: ({ img }: { img?: string }) => JSX.Element;
-  Buttons: () => JSX.Element;
+  Buttons: ({ className }: { className?: string }) => JSX.Element;
+}
+
+export interface ProductTitleProps {
+  title?: string;
+  className?: string;
+}
+
+export interface ProductImageProps {
+  img?: string;
+  className?: string
 }
