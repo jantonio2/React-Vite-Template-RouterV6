@@ -1,8 +1,9 @@
 import { ProductButtons, ProductImage, ProductTitle, ProductCard } from '../components';
-import { Product } from '../interfaces/interfaces';
+import { Product, ProductInCart } from '../interfaces/interfaces';
+import { useState } from 'react';
 import '../styles/custom-styles.css';
 
-const product: Product = {
+const product1: Product = {
   id: '1',
   title: 'Coffee Mug - Card',
   img: './coffee-mug.png'
@@ -14,9 +15,12 @@ const product2: Product = {
   img: './coffee-mug2.png'
 };
 
-const products: Product[] = [ product, product2 ];
+const products: Product[] = [ product1, product2 ];
 
 export const ShoppingPage = () => {
+  
+  const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
+
   return (
     <div>
       <h1>Shopping Store</h1>
@@ -53,7 +57,7 @@ export const ShoppingPage = () => {
             <ProductButtons className='custom-buttons' />
           </ProductCard>
           <ProductCard
-            product={ product }
+            product={ product1 }
             className='bg-dark text-white'
             style={{ width: '100px' }}
           >

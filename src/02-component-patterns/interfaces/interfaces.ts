@@ -41,3 +41,7 @@ export interface ProductButtonsProps {
   className?: string;
   style?: CSSProperties;
 }
+
+export interface ProductInCart extends Product {
+  count: number;
+}
