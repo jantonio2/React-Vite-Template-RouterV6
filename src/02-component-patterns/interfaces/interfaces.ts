@@ -5,6 +5,7 @@ export interface ProductCardProps {
   className?: string;
   product: Product;
   style?: CSSProperties;
+  onChange?: () => void;
 }
 export interface ProductContextProps {
   counter: number;
