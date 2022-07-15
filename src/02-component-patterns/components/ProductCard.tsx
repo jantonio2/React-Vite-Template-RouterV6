@@ -12,7 +12,7 @@ const { Provider } = ProductContext;
 
 export const ProductCard = ({ children, product, className, style, onChange }: ProductCardProps) => {
 
-  const { counter, increaseBy } = useProduct( onChange );
+  const { counter, increaseBy } = useProduct( { onChange, product } );
 
   return (
     <Provider value={{
