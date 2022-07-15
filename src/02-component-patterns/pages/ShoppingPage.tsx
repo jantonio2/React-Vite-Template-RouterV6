@@ -1,58 +1,13 @@
 import { ProductButtons, ProductImage, ProductTitle, ProductCard } from '../components';
-import { Product, ProductInCart } from '../interfaces/interfaces';
-import { useState } from 'react';
+import { products } from '../data/products';
+import { useShoppingCart } from '../hooks/useShoppingCart';
 import '../styles/custom-styles.css';
 
-const product1: Product = {
-  id: '1',
-  title: 'Coffee Mug - Card',
-  img: './coffee-mug.png'
-};
 
-const product2: Product = {
-  id: '2',
-  title: 'Coffee Mug - Meme',
-  img: './coffee-mug2.png'
-};
-
-const products: Product[] = [ product1, product2 ];
 
 export const ShoppingPage = () => {
   
-  const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
-
-  const onProductCountChange = ({ count, product }: { count:number, product: Product }) => {
-
-    setShoppingCart( oldShoppingCart => {
-      // Aplicación sencilla y eficiente
-      // if( count === 0 ){
-        
-      //   const { [product.id]:toDelete, ...rest } = oldShoppingCart;
-
-      //   return { ...rest }
-      // }
-
-      // return {
-      //   ...oldShoppingCart,
-      //   [ product.id ]: { ...product, count }
-      // }
-
-      // Aplicación con control props estricto
-      const productInCart: ProductInCart = oldShoppingCart[product.id] || { ...product, count: 0 };
-
-      if( Math.max( productInCart.count + count, 0 ) ){
-        productInCart.count += count;
-        return {
-          ...oldShoppingCart,
-          [product.id]: productInCart
-        }
-      }
-
-      const { [product.id]:toDelete, ...rest } = oldShoppingCart;
-      return { ...rest }      
-
-    })
-  }
+  const { shoppingCart, onProductCountChange } = useShoppingCart();
 
   return (
     <div>
