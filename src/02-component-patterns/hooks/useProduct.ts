@@ -9,8 +9,7 @@ export const useProduct = ( { onChange, product, value = 0, initialValues }: use
   console.log(initialValues?.count);
 
   const increaseBy = ( value: number ) => {
-
-    const newValue = Math.max( counter + value, 0);
+    const newValue = Math.max(Math.min(counter + value,initialValues?.maxCount || counter + value), 0);
     setCounter( newValue );
     onChange && onChange( { count: newValue, product: product } );
   }
