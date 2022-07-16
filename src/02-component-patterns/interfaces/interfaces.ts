@@ -13,6 +13,7 @@ export interface ProductCardProps {
 export interface ProductContextProps {
   counter: number;
   increaseBy: ( value: number ) => void;
+  maxCount?: number;
   product: Product;
 }
 
