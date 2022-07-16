@@ -6,12 +6,14 @@ export const useProduct = ( { onChange, product, value = 0, initialValues }: use
   const [counter, setCounter] = useState<number>(initialValues?.count || value);  
   // const isMounted = useRef(false);
 
-  console.log(initialValues?.count);
-
   const increaseBy = ( value: number ) => {
     const newValue = Math.max(Math.min(counter + value,initialValues?.maxCount || counter + value), 0);
     setCounter( newValue );
     onChange && onChange( { count: newValue, product: product } );
+  }
+
+  const reset = () => {
+    setCounter( initialValues?.count || value );
   }
   
   // No funciona en strictmode
@@ -32,6 +34,8 @@ export const useProduct = ( { onChange, product, value = 0, initialValues }: use
   return {
     counter, 
     increaseBy, 
-    maxCount: initialValues?.maxCount
+    isMaxCountReached: !!initialValues?.maxCount && initialValues.maxCount === counter,
+    maxCount: initialValues?.maxCount,
+    reset
   }
 }

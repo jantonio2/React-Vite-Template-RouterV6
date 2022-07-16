@@ -2,7 +2,7 @@ import { CSSProperties, ReactElement } from 'react';
 
 export interface ProductCardProps {
   // children?: ReactElement | ReactElement[];
-  children: () => JSX.Element;
+  children: ( args: ProductCardHandlers ) => JSX.Element;
   className?: string;
   product: Product;
   style?: CSSProperties;
@@ -66,4 +66,13 @@ export interface useProductArgs {
 export interface InitialValues {
   count?: number;
   maxCount?: number;
+}
+
+export interface ProductCardHandlers {
+  count: number;
+  increaseBy: ( value: number ) => void;
+  isMaxCountReached: boolean;
+  maxCount?: number;
+  product: Product;
+  reset: () => void;
 }
