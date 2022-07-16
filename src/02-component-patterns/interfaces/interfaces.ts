@@ -1,7 +1,8 @@
 import { CSSProperties, ReactElement } from 'react';
 
 export interface ProductCardProps {
-  children?: ReactElement | ReactElement[];
+  // children?: ReactElement | ReactElement[];
+  children: () => JSX.Element;
   className?: string;
   product: Product;
   style?: CSSProperties;

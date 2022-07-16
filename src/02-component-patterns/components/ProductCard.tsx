@@ -21,7 +21,7 @@ export const ProductCard = ({ children, product, className, style, onChange, val
       product
     }}>
       <div className={ `${styles.productCard} ${className}` } style={ style }>
-        { children }
+        { children() }
       </div>
     </Provider>
   );
