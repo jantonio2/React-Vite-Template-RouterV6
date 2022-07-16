@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useProductArgs } from '../interfaces/interfaces';
 
 export const useProduct = ( { onChange, product, value = 0, initialValues }: useProductArgs ) => {
-  const [counter, setCounter] = useState<number>(initialValues?.count || value);
 
-  console.log(initialValues?.count)
+  const [counter, setCounter] = useState<number>(initialValues?.count || value);  
+  // const isMounted = useRef(false);
+
+  console.log(initialValues?.count);
 
   const increaseBy = ( value: number ) => {
 
@@ -12,12 +14,20 @@ export const useProduct = ( { onChange, product, value = 0, initialValues }: use
     setCounter( newValue );
     onChange && onChange( { count: newValue, product: product } );
   }
+  
+  // No funciona en strictmode
+  // useEffect(() => {
+  //   if (!isMounted.current) return;
+  //   setCounter(value);
+  // }, [value]);
+
+  // useEffect(() => {
+  //   isMounted.current = true;
+  // }, []);
 
   useEffect(() => {
-    
-    setCounter( value );
-
-  }, [value])
+    setCounter(initialValues?.count || value);   
+  }, [value]);
   
 
   return {
