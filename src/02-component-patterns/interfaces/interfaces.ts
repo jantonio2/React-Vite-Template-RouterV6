@@ -7,6 +7,7 @@ export interface ProductCardProps {
   style?: CSSProperties;
   onChange?: ( args: onChangeArgs ) => void;
   value?: number;
+  initialValues?: InitialValues
 }
 export interface ProductContextProps {
   counter: number;
@@ -57,4 +58,10 @@ export interface useProductArgs {
   product: Product;
   onChange?: ( args: onChangeArgs ) => void;
   value?: number;
+  initialValues?: InitialValues;
+}
+
+export interface InitialValues {
+  count?: number;
+  maxCount?: number;
 }

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useProductArgs } from '../interfaces/interfaces';
 
-export const useProduct = ( { onChange, product, value = 0 }: useProductArgs ) => {
-  const [counter, setCounter] = useState(value);
+export const useProduct = ( { onChange, product, value = 0, initialValues }: useProductArgs ) => {
+  const [counter, setCounter] = useState<number>(initialValues?.count || value);
+
+  console.log(initialValues?.count)
 
   const increaseBy = ( value: number ) => {
 
