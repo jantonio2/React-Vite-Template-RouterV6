@@ -12,5 +12,12 @@
     "placeholder": "Rocha",
     "label": "Last Name",
     "value": ""
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "antonio.rocha@gmail.com",
+    "label": "Email Address",
+    "value": ""
   }
 ]
