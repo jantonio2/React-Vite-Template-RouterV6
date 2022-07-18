@@ -19,5 +19,25 @@
     "placeholder": "antonio.rocha@gmail.com",
     "label": "Email Address",
     "value": ""
+  },
+  {
+    "type": "select",
+    "name": "favoriteGame",
+    "label": "Favorite Game",
+    "value": "",
+    "options": [
+      {
+        "id": "super_smash",
+        "label": "Super Smash"
+      },
+      {
+        "id": "warcraft",
+        "label": "Warcraft"
+      },
+      {
+        "id": "starcraft",
+        "label": "Starcraft"
+      }
+    ]
   }
 ]
